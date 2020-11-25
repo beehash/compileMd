@@ -24,10 +24,9 @@ vue2 通过 Object.defineProperty() 方式来截持数据的变更。</p>
 
 <p class="fragment" data-fragment-index="1" style="font-size: 16px;">
 因为在 vue2 中，响应式数据需要通过 data() 初始化预先定义好，但是在 vue3 之后，data 中的数据不再进行响应式追踪，而是将它转化为 proxy 代理再进行追踪更新。</p>
-<p class="fragement" data-fragment-index="2">
-![vue3 data 数据转化为proxy](https://beehash.github.io/shared/images/10.28.23.png)
-</p>
 
+![code](https://beehash.github.io/shared/images/10.28.23.png)<!-- .element: class="fragment" data-fragment-index="2"-->
+![view](https://beehash.github.io/shared/images/10.54.38.png)<!-- .element: class="fragment" data-fragment-index="2"-->
 
 
 注意： <!-- .element: class="fragment" class="hljs-emphasis" style="font-size: 20px;"-->
