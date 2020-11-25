@@ -22,7 +22,7 @@ vue2 通过 Object.defineProperty() 方式来截持数据的变更。</p>
 而在升级为 vue3 之后，作者不再借助 Object.defineProperty 来劫持数据，而是通过 es6 的新特性 proxy 来劫持数据。</p>
 
 
-<p class="fragment" data-fragment-index="3" style="font-size: 16px;">
+<p class="fragment" data-fragment-index="1" style="font-size: 16px;">
 因为在 vue2 中，响应式数据需要通过 data() 初始化预先定义好，但是在 vue3 之后，data 中的数据不再进行响应式追踪，而是将它转化为 proxy 代理再进行追踪更新。</p>
 ![vue3 data 数据转化为proxy](https://beehash.github.io/shared/images/10.28.23.png" proxy")
 
