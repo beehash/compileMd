@@ -7,7 +7,7 @@
 - 数据拦截机制的变更 <!-- .element: class="fragment" data-fragment-index="1" -->
 - 组合API的引入 <!-- .element: class="fragment" data-fragment-index="2" -->
 - setup函数带来的一系列惊喜 <!-- .element: class="fragment" data-fragment-index="3" -->
-- 响应式API的宽泛应用 <!-- .element: class="fragment" data-fragment-index="4" -->
+- 响应式API的应用 <!-- .element: class="fragment" data-fragment-index="4" -->
 
 
 
@@ -197,7 +197,7 @@ setup() {
 
 
 
-### 四、响应式API的宽泛应用
+### 四、响应式API的应用
 
 
 Ref和reactive API带来的便利
@@ -219,24 +219,21 @@ Ref和reactive API带来的便利
 
 ```
 >> state.js 
-    
-export function useCount () {
-    const count = ref(0);
+  store = {
+    state: reactive({
+      count: 0,
+    })
+  };
 
-    setCount (newv = 0) {
-        count.value = newv;
-    }
-
-    return {
-      count,
-      setCount,
-    };
-}
+  export default store;
 ```
 ```
-import {useCount} from 'state.js';
+import store from 'state.js';
 setup() {
-    const { count } = useCount();
+  // set count
+  store.count = 2;
+  // get count
+  console.log(store.count)
 }
 ```
 
