@@ -202,7 +202,7 @@ setup() {
 
 Ref和reactive API带来的便利
 <p class="fragment" data-fragment-index="1" style="font-size: 16px;">
-  vue3中的 ref的reactive 非常非常的好用，为什么这么说？
+  vue3中的 ref和reactive 非常非常的好用，为什么这么说？
 <p class="fragment" data-fragment-index="2" style="font-size: 16px;">
   因为vue在这里直接给出了他的全局API。
 </p>
@@ -273,3 +273,8 @@ watchEffect(() => {
   console.log(aaa.value);
 });
 ```
+
+
+
+# END
+# TK U
