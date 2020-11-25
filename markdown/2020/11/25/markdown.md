@@ -19,14 +19,18 @@
 vue2 通过 Object.defineProperty() 方式来截持数据的变更。</p>
 
 <p class="fragment" data-fragment-index="2" style="font-size: 16px;">
-而在升级为 vue3 之后，作者不再借助 Object.defineProperty 来劫持数据，而是通过 es6 的新特性 proxy 来劫持数据。</p>
+而在升级为 vue3 之后，作者不再借助 Object.defineProperty 来劫持数据<br>
+而是通过 es6 的新特性 proxy 来劫持数据。</p>
 
 
 <p class="fragment" data-fragment-index="1" style="font-size: 16px;">
-因为在 vue2 中，响应式数据需要通过 data() 初始化预先定义好，但是在 vue3 之后，data 中的数据不再进行响应式追踪，而是将它转化为 proxy 代理再进行追踪更新。</p>
+因为在 vue2 中，响应式数据需要通过 data() 初始化预先定义好</p>
+<p class="fragment" data-fragment-index="2" style="font-size: 16px;">
+但是在 vue3 之后，data 中的数据不再进行响应式追踪
+<br>而是将它转化为 proxy 代理再进行追踪更新。</p>
 
-![code](https://beehash.github.io/shared/images/10.28.23.png)<!-- .element: class="fragment" data-fragment-index="2"-->
-![view](https://beehash.github.io/shared/images/10.54.38.png)<!-- .element: class="fragment" data-fragment-index="2"-->
+![code](https://beehash.github.io/shared/images/10.54.38.png)<!-- .element: class="fragment" data-fragment-index="3"-->
+![view](https://beehash.github.io/shared/images/10.28.23.png)<!-- .element: class="fragment" data-fragment-index="3"-->
 
 
 注意： <!-- .element: class="fragment" class="hljs-emphasis" style="font-size: 20px;"-->
@@ -240,24 +244,32 @@ setup() {
 关于computed和watch在setup函数中的使用
 
 ```
-computed: {
-	aaa() => {
-        	return 333
-        }
-    },
-    watch: {
-    	bbb(newv, oldv) {
-        	console.log(newv, oldv);
-        }
-    },
-}
-```
-```
 import { computed, watch } from 'vue';
 
 const aaa = computed(() => {
   return 333;
 })
+```
 
-const bbb = watch();
+
+```
+// watch 实现了$watch全部的功能
+// 单个数据源侦听
+watch((bbb, (current, prev)) => {
+  Your Code
+});
+
+// 多个数据源的侦听
+watch([aaa, bbb], ([current, prev], [current2, prev2]) => {
+  Your Code
+})
+```
+```
+import {watchEffect} from 'vue';
+
+// watchEffect 只追踪依赖项的变更，在变化时，会执行回调函数
+const aaa = ref(0);
+watchEffect(() => {
+  console.log(aaa.value);
+});
 ```
