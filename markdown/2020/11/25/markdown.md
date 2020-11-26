@@ -35,7 +35,7 @@ vue2 通过 Object.defineProperty() 方式来截持数据的变更。</p>
 
 注意： <!-- .element: class="fragment" class="hljs-emphasis" style="font-size: 20px;"-->
 <p class="fragment" data-fragment-index="1" style="font-size: 16px;">
-在vue3中，它将任何在data()函数中定义的数据，会使用getter或setter遍历所有的property，将其转化成proxy代理。</p>
+在vue3中，它将任何在data()函数中定义的数据，会使用带有getter和setter的存取器程序遍历所有的property，将其转化成proxy代理。</p>
 
 
 
@@ -233,7 +233,6 @@ setup() {
   // set count
   store.count = 2;
   // get count
-  console.log(store.count)
 }
 ```
 
@@ -270,6 +269,28 @@ watchEffect(() => {
   console.log(aaa.value);
 });
 ```
+
+
+## watch VS watchEffect
+
+  <p class="fragment" data-fragment-index="1" style="font-size: 16px;">
+    1、惰性侦听
+  </p>
+  <p class="fragment" data-fragment-index="1" style="font-size: 16px;">
+  watchEffect 只具备追踪变更的功能，并且在追踪依赖项的时候就会执行回调函数<br>
+  watch 相比，会惰性侦听依赖项，在追踪依赖项的时候，不会执行回调函数。
+  </p>
+
+  <p class="fragment" data-fragment-index="2" style="font-size: 16px;">
+    2、支持访问当前和之前的状态
+  </p>
+  <p class="fragment" data-fragment-index="3" style="font-size: 16px;">
+    3、更具体地说明什么情况下应该触发对调函数
+  </p>
+  <p class="fragment" data-fragment-index="3" style="font-size: 16px;">
+    应该是watch相对于watchEffect给出了更多的选项。<br>
+      比如，获取之前和现在的状态，通过状态的变化，我们可以判段是否执行对应的回调。
+  </p>
 
 
 
