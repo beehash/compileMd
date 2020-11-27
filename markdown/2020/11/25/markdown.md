@@ -200,20 +200,33 @@ setup() {
 ### 四、响应式API的应用
 
 
-Ref和reactive API带来的便利
+##### Ref Vs Reactive
+  <p class="fragment" data-fragment-index="1" style="font-size: 16px;">ref 是一种基本数据类型的创建方式，返回的是一个 RefImpl 对象。value 指向其绑定的值。<br>如果用它来创建对像的话，会将它的  value 返回一个 reactive 对象。</p>
+  <p class="fragment" data-fragment-index="2" style="font-size: 16px;">reactive 对象的返回的是一个 proxy 代理<br>他在创建的时候，就会一一遍历每一个属性，并将它创建为 es6 代理方式。</p>
+  
+
+
+  <p style="font-size: 16px;">这里我们做一个示例证明一下</p>
+
+  ![code](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c150342a35d1414a9b86f02aa6425385~tplv-k3u1fbpfcp-watermark.image)
+
+
+  ![view](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b7da85d66e0c4d2e8ec2b21058828745~tplv-k3u1fbpfcp-watermark.image)
+  <p style="font-size: 16px;">从打印的数据我们可以看出<br>ref数据创建的对象类型的.value跟reactive的数据结构是一致的。<br>也就是说，在ref创建对象类型的数据时，对自动转化为reactive数据。</p>
+
+
+Ref 和 reactive API带来的便利
 <p class="fragment" data-fragment-index="1" style="font-size: 16px;">
-  vue3中的 ref和reactive 非常非常的好用，为什么这么说？
+  vue3中的 ref 和 reactive 非常非常的好用，为什么这么说？
 <p class="fragment" data-fragment-index="2" style="font-size: 16px;">
   因为vue在这里直接给出了他的全局API。
 </p>
 <p class="fragment" data-fragment-index="3" style="font-size: 16px;">
-  不管在任何场景下，我们都可以直接引入，并创建这个响应式的数据。通过导入，导出，实现代码的 `集中化管理` 。
+  不管在任何场景下，我们都可以直接引入，并创建这个响应式的数据。通过导入，导出，实现代码的 <span class="hljs-emphasis">集中化管理</span> 。
 </p>
 <p class="fragment" data-fragment-index="4" style="font-size: 16px;">
-</p>
-<p class="fragment" data-fragment-index="5" style="font-size: 16px;">
-  所谓 `集中化管理`, 在这里指的是代码的运用灵活度提升。</p>
-<p class="fragment" data-fragment-index="5" style="font-size: 16px;">
+  所谓 <span class="hljs-emphasis">集中化管理</span> 在这里指的是代码的运用灵活度提升。</p>
+<p class="fragment" data-fragment-index="4" style="font-size: 16px;">
   vue2中，使用store来集中管理状态，而现在，我们可以直接真正抛弃store了。因为vue3的响应式API 给我们带来了非常nice的体验。</p>
 
 
