@@ -25,47 +25,25 @@ javascript 中的 this 是我们常常碰到的，但是，你真的够了解它
 
 
 ### 1.1 误解1: 指向自身
-<p style="font-size: 16px; text-align: left;">
-可能对于初学者来说，this 就是指向函数自身的一个指针. <br><br>
-让我们来看一道比较经典的例题，分析下为什么它不指向自身
+<p style="font-size: 16px;">
+让我们来看下这道题，它真的指向自身么？<br><br>
 </p>
-
-
-<p style="font-size: 16px; text-align: left;">运行下这道题目会输出什么？</p>
 
 ![这张图片](https://beehash.github.io/shared/images/21.4.15.1.png)
 
-- 打印输出：3
 
-如果 this 指向函数自身的话，那么, this.length 应该输出 0；
+<p style="font-size: 16px;">打印输出：3</p>
+<p style="font-size: 16px;">
+这里输出 3 出自 arguments.length<br><br>
+你可以看见 this 并非指向自身了<br><br>
+因为 arguments[0] 这个表达式已经静悄悄地改变了this的指向为 arguments对象了。 
+</p>
 
-这里应该输出 undefined;
-
-意味着这里的 this 指向的，并非自身。
-
-> `QA1`
->> 那么，此处的 this 指向哪里呢 ？
->
->> 答案是 methods 函数的 arguments 数组对象
->
-> `QA2`
->> 为什么指向 arguments 对象 ？
->
->> 虽然，这里 object.method 传入的是 callback 函数，直接执行 callback() 函数的话是输出 4， 但是 methods 函数调用的是 arguments 的第一个参数， 这里的 this 实际指的是 arguments 对象
-> 
-> `QA3` 
->
->> 怎么让它指向函数自身 ?
->
->> - this.length 改为 callback.length
->> - arguments[0].call(callback);
-> `End`
 
 ### 1.2 误解2：它的作用域
-> this指向的是当前对象所在的作用域。
-
-还是使用上述的例子，若是依据 this 指向的它的作用域， 那么应该返回 4
-
+<p style="font-size: 16px; text-align: left;">
+this指向的是当前对象所在的作用域。 <br><br>
+</p>
 事实是没有返回4，也推翻了这个假说
 
 
