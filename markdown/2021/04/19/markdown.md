@@ -41,15 +41,19 @@ javascript 中的 this 是我们常常碰到的，但是，你真的够了解它
 
 
 ### 1.2 误解2：它的作用域
-<p style="font-size: 16px; text-align: left;">
+<p style="font-size: 16px;">
 this指向的是当前对象所在的作用域。 <br><br>
 </p>
-事实是没有返回4，也推翻了这个假说
+
+![另一张图片](https://beehash.github.io/shared/images/21.4.15.3.png)
 
 
-$\color{#f89d5e}{Note：}$ `var length = 4；` 这里实际上使用了 默认绑定。将  this 指向 global 作用域对象。
 
-什么是默认绑定？下文会解释到
+<p style="font-size: 16px;"> 输出 `ƒ big() { [native code] }`</p>
+<p style="font-size: 16px;"> 这道题有些难度，第一步就改变了 this 的指向。而且输出的内容是 String 对象中的原生 big 方法。因为 call 方法改变了 this 的指向为 变量 big ，是一个字符串对象。
+</p>
+<p style="font-size: 16px;"> 这里涉及了一个 `call` 和 `隐式绑定` 间的优先级问题。call 赢了，所以 this 绑定到了 big 这个变量上了。</p>
+
 
 
 #### 小结
@@ -57,10 +61,9 @@ $\color{#f89d5e}{Note：}$ `var length = 4；` 这里实际上使用了 默认�
  
  javascript 虽然是编译型语言，但是和大多数编译型语言不一样，它的执行作用域是在运行时指定的，不同的运行环境，他的执行作用域是有可能改变的。
  
- 因此，this 指向问题，不能看this 的使用位置，而应该看调用它的作用域对象是谁。
-
-
-
+ 因此，this 指向问题，不能看 this 的词法作用域，而应该看它的绑定对象是谁。
+ 
+ 接下来介绍给大家的是 javascript 中的 this 是依据什么来的，先介绍javascript 绑定this的几种方式
 
 ## 2、 改变 this 的指向
 有多少种方式可以改变this的指向？
@@ -130,6 +133,15 @@ $\color{#f89d5e}{Note：}$ 默认绑定在 es5 严格模式下， 没有效果
 上述绑定改变this指向的方法也有优先级。
 
 $\color{red}{ bind 、 apply 、 call}$  >  $\color{orange}{new}$ > $\color{green}{隐式绑定}$ > $\color{blue}{默认绑定}$
+
+
+#### this 的依据来源
+    在非严格模式下，正常条件下，在我们不直接手动调用 bind 、 call 、apply 这三种强制绑定的方式时
+    javascript 有 默认绑定、隐式绑定、new 绑定来帮助我们静悄悄改变 this 的指向。
+    并且这种绑定也存在优先级。这也是this的神秘之处。
+    
+    当只存在一种绑定情形时，this = 绑定的对象。
+    当存在几种绑定情形时，this = 优先级最大的指定的绑定对象。
 
 
 ## 4、小例子
