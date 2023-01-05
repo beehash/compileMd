@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>智慧树前端插件开发分享</title>
+
+		<link rel="stylesheet" href="https://beehash.github.io/shared/revealjs/js/reveal.css">
+		<link rel="stylesheet" href="https://beehash.github.io/shared/revealjs/css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://beehash.github.io/shared/revealjs/js/plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+                <!-- Use external markdown resource, separate slides by three newlines; vertical slides by two newlines -->
+                <section data-markdown="markdown.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
+
+            </div>
+		</div>
+
+		<script src="https://beehash.github.io/shared/revealjs/js/reveal.js"></script>
+    <script src="https://beehash.github.io/shared/revealjs/js/plugin/markdown/markdown.js"></script>
+    <script src="https://beehash.github.io/shared/revealjs/js/plugin/highlight/highlight.js"></script>
+    <script src="https://beehash.github.io/shared/revealjs/js/plugin/notes/notes.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+        controlsBackArrows: 'faded',
+        
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+
+		</script>
+
+	</body>
+</html>
